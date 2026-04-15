@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bộ môn Dược lý</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background: #f5f7fb;
+      color: #1e293b;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+    header {
+      background: linear-gradient(135deg, #0f172a, #0369a1, #0891b2);
+      color: white;
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .logo h1 {
+      font-size: 22px;
+    }
+    .logo p {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(3,105,161,0.88));
+      color: white;
+      padding: 80px 0 70px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+    .hero h2 {
+      font-size: 42px;
+      margin-bottom: 18px;
+    }
+    .hero p {
+      font-size: 17px;
+      max-width: 700px;
+      opacity: 0.95;
+    }
+    .hero-buttons {
+      margin-top: 28px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .btn-primary {
+      background: white;
+      color: #0f172a;
+    }
+    .btn-primary:hover {
+      background: #e2e8f0;
+    }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.6);
+      color: white;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.12);
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    .stat-box {
+      background: rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 22px;
+      backdrop-filter: blur(4px);
+    }
+    .stat-box h3 {
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+    section {
+      padding: 60px 0;
+    }
+    .section-title {
+      margin-bottom: 25px;
+    }
+    .section-title p {
+      color: #0369a1;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-title h2 {
+      font-size: 32px;
+      color: #0f172a;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 6px 20px rgba(15,23,42,0.06);
+    }
+    .card h3 {
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .tag {
+      background: #e0f2fe;
+      color: #075985;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .link-box {
+      padding: 14px 16px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      background: #fff;
+    }
+    .link-box:hover {
+      border-color: #38bdf8;
+      background: #f0f9ff;
+    }
+    .research-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .research-item {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px;
+      font-weight: bold;
+      color: #334155;
+    }
+    .dark-card {
+      background: #0f172a;
+      color: white;
+    }
+    .dark-card h3 {
+      color: white;
+    }
+    .announce-date {
+      color: #0369a1;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .person-role {
+      color: #0369a1;
+      font-weight: bold;
+      margin: 6px 0 10px;
+    }
+    footer {
+      background: #020617;
+      color: #cbd5e1;
+      padding: 50px 0 20px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+    .contact-box {
+      background: rgba(255,255,255,0.06);
+      padding: 16px;
+      border-radius: 14px;
+      margin-bottom: 12px;
+    }
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 24px;
+      padding-top: 18px;
+      font-size: 13px;
+      text-align: center;
+      color: #94a3b8;
+    }
+    @media (max-width: 992px) {
+      .hero-grid, .grid-2, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .grid-4 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .hero h2 {
+        font-size: 30px;
+      }
+      .stats,
+      .research-list,
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      nav ul {
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+      <p>BỘ MÔN DƯỢC LÝ</p>
+      <h1>Bộ môn Dược lý - Trường Đại học Y Dược, ĐHQGHN</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#gioi-thieu">Giới thiệu</a></li>
+          <li><a href="#dao-tao">Đào tạo</a></li>
+          <li><a href="#nghien-cuu">Nghiên cứu</a></li>
+          <li><a href="#thong-bao">Thông báo</a></li>
+          <li><a href="#doi-ngu">Đội ngũ</a></li>
+          <li><a href="#lien-he">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h2>Kết nối đào tạo, nghiên cứu và học thuật trong lĩnh vực dược lý</h2>
+        <p>
+         Website của Bộ môn Dược lý - Trường Đại học Y Dược, Đại học Quốc gia Hà Nội, 
+         được xây dựng nhằm giới thiệu hoạt động đào tạo, nghiên cứu khoa học, học liệu 
+         và các thông báo học vụ của bộ môn.
+        </p>
+        <div class="hero-buttons">
+          <a href="#thong-bao" class="btn btn-primary">Xem thông báo</a>
+          <a href="#lien-he" class="btn btn-outline">Liên hệ bộ môn</a>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat-box">
+          <h3>12+</h3>
+          <p>Học phần phụ trách</p>
+        </div>
+        <div class="stat-box">
+          <h3>20+</h3>
+          <p>Đề tài nghiên cứu</p>
+        </div>
+        <div class="stat-box">
+          <h3>08</h3>
+          <p>Giảng viên & NCS</p>
+        </div>
+        <div class="stat-box">
+          <h3>15+</h3>
+          <p>Seminar mỗi năm</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gioi-thieu">
+    <div class="container grid-2">
+      <div class="card">
+        <div class="section-title">
+          <p>Giới thiệu</p>
+          <h2>Giới thiệu bộ môn</h2>
+        </div>
+        <p>
+          Bộ môn Dược lý là đơn vị phụ trách giảng dạy, nghiên cứu và phát triển học thuật trong lĩnh vực dược lý học,
+          dược lý lâm sàng, độc tính học và các phương pháp nghiên cứu tiền lâm sàng.
+        </p>
+        <br />
+        <p>
+          Bộ môn hướng đến xây dựng môi trường học thuật hiện đại, gắn kết giữa đào tạo với nghiên cứu,
+          giữa khoa học cơ bản với ứng dụng lâm sàng.
+        </p>
+        <div class="tag-list">
+          <span class="tag">Dược lý cơ sở</span>
+          <span class="tag">Dược lý lâm sàng</span>
+          <span class="tag">Độc tính học</span>
+          <span class="tag">Nghiên cứu in silico</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-title">
+          <p>Truy cập nhanh</p>
+          <h2>Liên kết nhanh</h2>
+        </div>
+        <div class="link-box">Chương trình đào tạo</div>
+        <div class="link-box">Lịch giảng dạy</div>
+        <div class="link-box">Ngân hàng câu hỏi</div>
+        <div class="link-box">Biểu mẫu học vụ</div>
+        <div class="link-box">Đề tài nghiên cứu</div>
+        <div class="link-box">Thông tin liên hệ</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dao-tao">
+    <div class="container">
+      <div class="section-title">
+        <p>Đào tạo</p>
+        <h2>Hoạt động học thuật và giảng dạy</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Đào tạo đại học</h3>
+          <p>Phụ trách giảng dạy Dược lý cơ sở và Dược lý lâm sàng cho sinh viên khối Y – Dược.</p>
+        </div>
+        <div class="card">
+          <h3>Đào tạo sau đại học</h3>
+          <p>Hỗ trợ học viên cao học, nghiên cứu sinh trong phương pháp nghiên cứu và viết bài khoa học.</p>
+        </div>
+        <div class="card">
+          <h3>Thực hành – nghiên cứu</h3>
+          <p>Tổ chức các học phần thực hành, định hướng nghiên cứu thực nghiệm và in silico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nghien-cuu">
+    <div class="container grid-2">
+      <div class="card">
+        <div class="section-title">
+          <p>Nghiên cứu</p>
+          <h2>Hướng nghiên cứu trọng tâm</h2>
+        </div>
+        <div class="research-list">
+          <div class="research-item">Dược lý thực nghiệm</div>
+          <div class="research-item">Dược lý phân tử và tế bào</div>
+          <div class="research-item">Đánh giá độc tính tiền lâm sàng</div>
+          <div class="research-item">Mô phỏng docking và động lực học phân tử</div>
+          <div class="research-item">Nghiên cứu hoạt chất thiên nhiên</div>
+          <div class="research-item">Thiết kế và tối ưu hóa học liệu dược lý</div>
+        </div>
+      </div>
+      <div class="card dark-card">
+        <div class="section-title">
+          <p style="color:#67e8f9;">Định hướng</p>
+          <h2 style="color:white;">Định hướng phát triển</h2>
+        </div>
+        <h3>Tăng cường công bố, hợp tác và số hóa học liệu</h3>
+        <p>
+          Website bộ môn đóng vai trò là cổng thông tin tập trung để cập nhật lịch học, tài liệu,
+          seminar, đề tài và các hoạt động chuyên môn.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="thong-bao">
+    <div class="container">
+      <div class="section-title">
+        <p>Thông báo</p>
+        <h2>Thông báo mới nhất</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="announce-date">15/04/2026</div>
+          <h3>Thông báo kế hoạch giảng dạy học kỳ I</h3>
+          <p>Cập nhật lịch học, lịch thực hành và phân công giảng viên cho các lớp Y, Dược và Răng Hàm Mặt.</p>
+        </div>
+        <div class="card">
+          <div class="announce-date">20/04/2026</div>
+          <h3>Mời tham dự seminar nghiên cứu cấp bộ môn</h3>
+          <p>Chuyên đề về dược lý thực nghiệm, thiết kế nghiên cứu tiền lâm sàng và định hướng công bố quốc tế.</p>
+        </div>
+        <div class="card">
+          <div class="announce-date">25/04/2026</div>
+          <h3>Cập nhật học liệu môn Dược lý 2</h3>
+          <p>Bổ sung ngân hàng câu hỏi, tài liệu tham khảo và hướng dẫn ôn tập cho sinh viên.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="doi-ngu">
+  <div class="container">
+    <div class="section-title">
+      <p>Nhân sự</p>
+      <h2>Đội ngũ giảng viên</h2>
+    </div>
+    <div class="grid-4">
+      <div class="card">
+        <h3>GS.TS. Bùi Thanh Tùng</h3>
+        <div class="person-role">Trưởng bộ môn (kiêm nhiệm)</div>
+        <p>Lãnh đạo, quản lý và định hướng hoạt động chuyên môn của bộ môn.</p>
+      </div>
+
+      <div class="card">
+        <h3>PGS.TS. Phạm Thị Nguyệt Hằng</h3>
+        <div class="person-role">Phó Trưởng bộ môn (kiêm nhiệm)</div>
+        <p>Phụ trách công tác chuyên môn, đào tạo và hỗ trợ quản lý hoạt động học thuật của bộ môn.</p>
+      </div>
+
+      <div class="card">
+        <h3>TS. Mai Phương Thanh</h3>
+        <div class="person-role">Phó Trưởng bộ môn</div>
+        <p>Tham gia giảng dạy, nghiên cứu khoa học và phát triển học liệu của bộ môn.</p>
+      </div>
+
+      <div class="card">
+        <h3>TS. Hoàng Nam Nhật</h3>
+        <div class="person-role">Giảng viên</div>
+        <p>Tham gia giảng dạy, nghiên cứu khoa học và hướng dẫn học tập trong lĩnh vực dược lý.</p>
+      </div>
+
+      <div class="card">
+        <h3>TS. Dương Thị Thu Hà</h3>
+        <div class="person-role">Giảng viên</div>
+        <p>Tham gia giảng dạy, nghiên cứu khoa học và các hoạt động chuyên môn của bộ môn.</p>
+      </div>
+
+      <div class="card">
+        <h3>ThS. Phan Hồng Minh</h3>
+        <div class="person-role">Giảng viên</div>
+        <p>Tham gia giảng dạy, hỗ trợ học tập và các hoạt động chuyên môn của bộ môn.</p>
+      </div>
+
+      <div class="card">
+        <h3>ThS. Đỗ Thị Hồng Khánh</h3>
+        <div class="person-role">Giảng viên</div>
+        <p>Tham gia giảng dạy, hỗ trợ học tập và các hoạt động chuyên môn của bộ môn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <footer id="lien-he">
+    <div class="container footer-grid">
+      <div>
+        <div class="section-title">
+          <p style="color:#67e8f9;">Liên hệ</p>
+          <h2 style="color:white;">Bộ môn Dược lý - Trường Đại học Y Dược, ĐHQGHN</h2>
+        </div>
+        <p>
+          Bạn có thể thay toàn bộ nội dung mẫu này bằng thông tin chính thức của trường,
+          khoa, bộ môn, giảng viên, lịch công tác và dữ liệu nghiên cứu thực tế.
+        </p>
+      </div>
+      <div>
+        <div class="contact-box">
+          <strong>Địa chỉ:</strong><br />
+          Phòng 107Y3, số 2B Cầu Giấy, đường Phạm Văn Đồng, Hà Nội
+        </div>
+        <div class="contact-box">
+          <strong>Điện thoại:</strong><br />
+          (024) 3 123 4567
+        </div>
+        <div class="contact-box">
+          <strong>Email:</strong><br />
+          duocly.ump@gmail.com
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">
+      © 2026 Bộ môn Dược lý. Giao diện mẫu HTML một file, dễ sửa và dễ triển khai.
+    </div>
+  </footer>
+</body>
+</html>
